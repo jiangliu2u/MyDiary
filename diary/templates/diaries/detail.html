@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>日记详情</title>
 </head>
 <body>
-
+{% csrf_token %}
+<li>{{diary.content}}</li>
+<li>{{diary.mood}}</li>
+<li>{{diary.pub_date}}</li>
 </body>
 </html>

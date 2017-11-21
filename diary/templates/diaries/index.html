@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>日记</title>
 </head>
 <body>
-
+<hr>
+{% if all_diaries %}
+    <ul>
+    {% for diary in all_diaries %}
+        <li><a href="{% url 'diary:detail' diary.id %}">{{ diary.content }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
 </body>
 </html>
