@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>日记</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-<hr>
-{% if all_diaries %}
-    <ul>
-    {% for diary in all_diaries %}
-        <li><a href="{% url 'diary:detail' diary.id %}">{{ diary.content }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-7">
+            {% if all_diaries %}
+                <ul>
+                    {% for diary in all_diaries %}
+                        <div id="diary-info" class="list-group-item">
+                            <h5 id="diary-username"></h5>
+                            <p id="diary-content">{{ diary.content }}</p>
+                            <small id="diary-time">{{ diary.pub_date }}</small>
+                        </div>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>
 </body>
 </html>
