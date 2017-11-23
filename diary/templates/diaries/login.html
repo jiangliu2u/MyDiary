@@ -11,7 +11,7 @@
     <div class="row">
 
     	<h4>           用户登录</h4>
-       <form class="form-horizontal" action="{% url 'diary:login'}"id="login" method = "post">
+       <form class="form-horizontal" action="/diary/login/"id="login" method = "post">
 			{% csrf_token %}
 			<hr>
 			<div class="form-group">

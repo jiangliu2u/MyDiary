@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Diary
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate
 import django.contrib.auth
 from django.contrib.auth.models import User
@@ -28,7 +28,7 @@ def logina(request):
 
 def login(request):
 	if request.method == 'POST':
-		print('POST')
+		print('我执行了')
 		username = request.POST.get('name','')
 		password = request.POST.get('password','')
 		user = authenticate(username=username,password=password)
@@ -36,4 +36,4 @@ def login(request):
 			auth.login(request, user)
 			print('dengluchenggong')
 		
-		return render(request, 'diaries/index.html')
+		return HttpResponseRedirect('/diary/')
