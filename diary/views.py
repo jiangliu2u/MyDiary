@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Diary
+from django.http import HttpResponse
+from django.contrib.auth import authenticate
+import django.contrib.auth
+from django.contrib.auth.models import User
 
 
 class IndexView(generic.ListView):
@@ -17,3 +21,19 @@ class DetailView(generic.DetailView):
 
     def get_queryset(self):
         return Diary.objects.all()
+
+
+def logina(request):
+	return render(request, 'diaries/login.html')
+
+def login(request):
+	if request.method == 'POST':
+		print('POST')
+		username = request.POST.get('name','')
+		password = request.POST.get('password','')
+		user = authenticate(username=username,password=password)
+		if user and user.is_active:
+			auth.login(request, user)
+			print('dengluchenggong')
+		
+		return render(request, 'diaries/index.html')
