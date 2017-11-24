@@ -1,29 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.views import generic
 from .models import Diary
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate
-import django.contrib.auth
+from django.contrib import auth
 from django.contrib.auth.models import User
 
 
-class IndexView(generic.ListView):
-    template_name = 'diaries/index.html'
-    context_object_name = 'all_diaries'
 
-    def get_queryset(self):
-        return Diary.objects.all()
-
-
-class DetailView(generic.DetailView):
-    model = Diary
-    template_name = 'diaries/detail.html'
-
-    def get_queryset(self):
-        return Diary.objects.all()
-
-
-def logina(request):
+def logina(request):#登录页面
 	return render(request, 'diaries/login.html')
 
 def login(request):
@@ -34,6 +19,15 @@ def login(request):
 		user = authenticate(username=username,password=password)
 		if user and user.is_active:
 			auth.login(request, user)
+			request.session['username']=username
 			print('dengluchenggong')
-		
-		return HttpResponseRedirect('/diary/')
+
+	return HttpResponseRedirect('/diary/')
+
+def index(request):
+	all_diaries = Diary.objects.all()
+	if request.session["username"]:
+		username = request.session.get('username')
+	else:
+		username = 'hh'
+	return render_to_response('diaries/index.html',{'username':username,'all_diaries':all_diaries})
