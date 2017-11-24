@@ -11,7 +11,8 @@ from django.contrib.auth.models import User
 def logina(request):#登录页面
 	return render(request, 'diaries/login.html')
 
-def login(request):
+
+def login(request):#登录验证方法
 	if request.method == 'POST':
 		print('我执行了')
 		username = request.POST.get('name','')
