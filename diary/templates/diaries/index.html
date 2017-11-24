@@ -8,7 +8,12 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h4>welcome {{username}}</h4>
+    {% if username %}
+        <h4>welcome {{username}}</h4>
+        <a href="logout/">注销</a>
+    {% else %}
+        <a href="logina/">登录</a><!--logina前如果加了"/"就为跳转到127.0.0.1:8000/logina-->
+    {% endif %}
 <div class="container">
     <div class="row">
         <div class="col-lg-1"></div>

@@ -27,8 +27,12 @@ def login(request):#登录验证方法
 
 def index(request):
 	all_diaries = Diary.objects.all()
-	if request.session["username"]:
-		username = request.session.get('username')
+	if request.session.get('username'):
+		username = request.session["username"]
 	else:
-		username = 'hh'
+		username = ''
 	return render_to_response('diaries/index.html',{'username':username,'all_diaries':all_diaries})
+
+def logout(request):
+	del request.session["username"]
+	return HttpResponseRedirect('/diary/')
