@@ -1,39 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>日记</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    {% if username %}
-        <h4>welcome {{username}}</h4>
-        <a href="logout/">注销</a>
-    {% else %}
-        <a href="logina/">登录</a><!--logina前如果加了"/"就为跳转到127.0.0.1:8000/logina-->
-    {% endif %}
-<div class="container">
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-7">
-            {% if all_diaries %}
-                <ul>
-                    {% for diary in all_diaries %}
-                        <div id="diary-info" class="list-group-item">
-                            <h5 id="diary-username"></h5>
-                            <p id="diary-content">{{ diary.content }}</p>
-                            <small id="diary-time">{{ diary.pub_date }}</small>
-                        </div>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No diaries are available.</p>
-            {% endif %}
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-7">
+                {% if all_diaries %}
+                    <ul>
+                        {% for diary in all_diaries %}
+                            <div id="diary-info" class="list-group-item">
+                                <h5 id="diary-username"></h5>
+                                <p id="diary-content">{{ diary.content }}</p>
+                                <small id="diary-time">{{ diary.pub_date }}</small>
+                            </div>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No diaries are available.</p>
+                {% endif %}
+            </div>
+            <div class="col-lg-4"></div>
         </div>
-        <div class="col-lg-4"></div>
     </div>
-</div>
-</body>
-</html>
+{% endblock %}

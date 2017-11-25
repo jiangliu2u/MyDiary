@@ -53,7 +53,7 @@ ROOT_URLCONF = 'MyDiary.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'diary/templates/diaries')],#此处注意，容易报templatesdoesnotExist错误
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
