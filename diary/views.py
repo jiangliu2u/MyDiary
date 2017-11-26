@@ -35,7 +35,7 @@ def login(request):  # 登录验证方法
 
 
 def index(request):
-    all_diaries = Diary.objects.all()
+    all_diaries = Diary.objects.order_by('-pub_date')
     if request.session.get('username'):
         username = request.session["username"]
     else:
