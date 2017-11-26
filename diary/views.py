@@ -9,7 +9,11 @@ from django.contrib.auth.models import User
 
 def detail(request, diary_id):  # 详情页面
     diary = get_object_or_404(Diary, pk=diary_id)
-    return render(request, 'diaries/detail.html', {'diary': diary, 'username': request.session['username']})
+    if request.session.get('username'):
+        username = request.session["username"]
+    else:
+        username = ''
+    return render(request, 'diaries/detail.html', {'diary': diary, 'username': username})
 
 
 def logina(request):  # 登录页面
@@ -46,4 +50,8 @@ def logout(request):
 
 def userinfo(request, user_name):
     user = User.objects.get(username=user_name)
-    return render(request, 'diaries/userInfo.html', {'user': user, 'username': request.session['username']})
+    if request.session.get('username'):
+        username = request.session["username"]
+    else:
+        username = ''
+    return render(request, 'diaries/userInfo.html', {'user': user, 'username': username})
