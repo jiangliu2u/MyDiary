@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^login/', views.login, name='login'),
     url(r'^logout/', views.logout, name='logout'),
     url(r'^(?P<diary_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^(?P<user_name>[a-zA-Z0-9]+)/$', views.userinfo, name='userinfo'),
 
 
 ]

@@ -9,7 +9,9 @@
                     <ul>
                         {% for diary in all_diaries %}
                             <div id="diary-info" class="list-group-item">
-                                <h5 id="diary-username"><a href="/diary/{{ diary.id }}">{{ diary.user.username }}说：</a></h5>
+                                <h5 id="diary-username"><a href="/diary/{{ diary.id }}">{{ diary.user.username }}的日记</a>
+                                    <small>[心情:{{ diary.mood }}]</small>
+                                </h5>
                                 <p id="diary-content">{{ diary.content }}</p>
                                 <small id="diary-time">{{ diary.pub_date }}</small>
                             </div>

@@ -8,13 +8,12 @@
             <div class="col-lg-2"></div>
             <div class="col-lg-7">
                 <div class="list-group-item">
-                    <h5 id="diary-username"><a href="/diary/{{user.username }}">{{ diary.user.username }}说:</a></h5>
-                    <p id="diary-content">{{ diary.content }}</p>
-                    <small id="diary-time">{{ diary.pub_date }}</small>
+                    <h5 id="username">用户名: {{ user.username }}</h5>
+                    <h5 id="fullname">全名:{{ user.last_name }}{{ user.first_name }}</h5>
+                    <h5 id="email">Email: {{ user.email }}</h5>
                 </div>
             </div>
             <div class="col-lg-3"></div>
         </div>
     </div>
-
 {% endblock %}

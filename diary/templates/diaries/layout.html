@@ -19,11 +19,10 @@
                     <li><a href="/diary/">首页</a></li>
                     {% if username %}
                         <li><a href="#">{{ username }}</a></li>
-                        <li><a href="logout">退出</a></li>
+                        <li><a style="float: right" href="logout">退出</a></li>
                     {% else %}
                         <li><a href="logina">登录</a></li>
                         <li><a href="#">注册</a></li>
-
                     {% endif %}
                 </ul>
             </div>

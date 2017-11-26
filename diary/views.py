@@ -42,3 +42,8 @@ def index(request):
 def logout(request):
     del request.session["username"]
     return HttpResponseRedirect('/diary/')
+
+
+def userinfo(request, user_name):
+    user = User.objects.get(username=user_name)
+    return render(request, 'diaries/userInfo.html', {'user': user})
