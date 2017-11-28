@@ -37,7 +37,7 @@ def login(request):  # 登录验证方法
 
 
 
-def index(request):
+def index(request):#首页
     all_diaries = Diary.objects.order_by('-pub_date')
     if request.session.get('username'):
         username = request.session["username"]
@@ -46,12 +46,12 @@ def index(request):
     return render_to_response('diaries/index.html', {'username': username, 'all_diaries': all_diaries})
 
 
-def logout(request):
+def logout(request):#注销
     del request.session["username"]
     return HttpResponseRedirect('/diary/')
 
 
-def userinfo(request, user_name):
+def userinfo(request, user_name):#用户详情
     user = User.objects.get(username=user_name)
     if request.session.get('username'):
         username = request.session["username"]
@@ -59,7 +59,7 @@ def userinfo(request, user_name):
         username = ''
     return render(request, 'diaries/userInfo.html', {'user': user, 'username': username})
 
-def postDiary(request):
+def postDiary(request):#写日记
     if request.method == 'POST':
         username = request.session["username"]
         user = User.objects.get(username = username)
@@ -74,7 +74,7 @@ def postDiary(request):
 
 
 
-def postPage(request):
+def postPage(request):#写日记页面
     if request.session.get('username'):
         username = request.session["username"]
     else:
@@ -82,3 +82,14 @@ def postPage(request):
     return render(request, 'diaries/postDiary.html',{"username":username})
 
         
+def regPage(request):    #注册页面
+    if request.session.get('username'):
+        username = request.session["username"]
+    else:
+        username=''
+    return render(request, 'diaries/regPage.html',{"username":username})
+
+
+def register(request):#用户注册
+    if request.method='POST':
+        usern
