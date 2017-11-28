@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^logina/', views.logina, name='logina'),
     url(r'^login/', views.login, name='login'),
     url(r'^postPage/', views.postPage, name='postPage'),
+    url(r'^regPage/', views.regPage, name='regPage'),
     url(r'^postDiary/', views.postDiary, name='postDiary'),
     url(r'^logout/', views.logout, name='logout'),
     url(r'^(?P<diary_id>[0-9]+)/$', views.detail, name='detail'),

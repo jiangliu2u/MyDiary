@@ -90,6 +90,6 @@ def regPage(request):    #注册页面
     return render(request, 'diaries/regPage.html',{"username":username})
 
 
-def register(request):#用户注册
-    if request.method='POST':
-        usern
+# def register(request):#用户注册
+#     if request.method='POST':
+#         usern
