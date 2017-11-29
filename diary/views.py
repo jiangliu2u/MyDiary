@@ -90,6 +90,14 @@ def regPage(request):    #注册页面
     return render(request, 'diaries/regPage.html',{"username":username})
 
 
-# def register(request):#用户注册
-#     if request.method='POST':
-#         usern
+def register(request):#用户注册
+    if request.method == 'POST':
+        username = request.POST.get('usernmae','')
+        password = request.POST.get('password')
+        if User.objects.get(username=username):
+            print('用户名已被注册')
+            #return HttpResponseRedirect('/diary/')
+        else:
+            user = User(username=username,password=password)
+            user.save()
+            #return HttpResponseRedirect('/diary/logina')
