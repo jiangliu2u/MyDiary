@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class Diary(models.Model):
-    user = models.ForeignKey(User, default='')
+    user = models.ForeignKey(User, default='',on_delete=models.CASCADE)
     content = models.CharField(max_length=1000)
     pub_date = models.DateTimeField('date_published')
     mood = models.CharField(max_length=10)
